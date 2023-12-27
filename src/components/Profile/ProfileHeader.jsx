@@ -55,8 +55,8 @@ const ProfileHeader = () => {
         justifySelf={"center"}
       >
         <Avatar
-          name="Hendrick"
-          alt="Hendrick"
+          name={userProfile.username}
+          alt={userProfile.username+' profile photo'}
           src={userProfile.profilePicURL}
         />
       </AvatarGroup>
