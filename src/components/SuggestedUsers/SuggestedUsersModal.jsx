@@ -9,6 +9,7 @@ import {
   SkeletonCircle,
   Skeleton,
   Flex,
+  Text,
 } from "@chakra-ui/react";
 import SuggestedUser from "./SuggestedUser";
 
@@ -47,9 +48,16 @@ const SuggestedUsersModal = ({
             </VStack>
           ) : (
             <VStack gap={4} maxH={"450px"} overflowY={"auto"}>
-              {suggestedUsers.map((user) => (
-                <SuggestedUser key={user.uid} user={user} />
-              ))}
+              {suggestedUsers.length == 0 ? (
+                <Text>There is no suggested user at the moment.</Text>
+              ) : (
+                <>
+                  {" "}
+                  {suggestedUsers.map((user) => (
+                    <SuggestedUser key={user.uid} user={user} />
+                  ))}
+                </>
+              )}
             </VStack>
           )}
         </ModalBody>
