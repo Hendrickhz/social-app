@@ -11,7 +11,7 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import useSignUpWithEmailAndPassword from "../../hooks/useSignUpWithEmailAndPassword";
+import useSignUpWithEmailAndPassword from "../../hooks/useSignupWithEmailAndPassword.js";
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
