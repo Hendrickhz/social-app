@@ -30,18 +30,16 @@ const EditProfile = ({ isOpen, onClose }) => {
   const fileRef = useRef(null);
   const { selectedImg, handleImg } = usePreviewImg();
   const { isUpdating, handleEditProfile } = useEditProfile();
-
+  const handleEdit = async (inputs, selectedImg) => {
+    await handleEditProfile(inputs, selectedImg);
+    onClose();
+  };
   return (
     <>
       {authUser && (
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent
-            bg={"black"}
-            boxShadow={"xl"}
-            border={"1px solid gray"}
-            mx={3}
-          >
+          <ModalContent mx={3}>
             <ModalHeader />
             <ModalCloseButton />
             <ModalBody>
@@ -143,7 +141,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                       size="sm"
                       w="full"
                       _hover={{ bg: "blue.500" }}
-                      onClick={() => handleEditProfile(inputs, selectedImg)}
+                      onClick={handleEdit}
                       isLoading={isUpdating}
                     >
                       Submit
