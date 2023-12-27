@@ -32,12 +32,12 @@ This project is a full-stack Instagram clone developed using React and Firebase.
 ## Project Structure
 
 - /src
--     /components
--     /firebase
--     /hooks
--     /layouts
--     /pages
--     /store
+-  /components
+-  /firebase
+-  /hooks
+-  /layouts
+-  /pages
+-  /store
 - App.jsx
 - main.jsx
 
