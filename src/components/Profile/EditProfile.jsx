@@ -44,12 +44,12 @@ const EditProfile = ({ isOpen, onClose }) => {
             <ModalCloseButton />
             <ModalBody>
               {/* Container Flex */}
-              <Flex bg={"black"}>
+              <Flex >
                 <Stack
                   spacing={4}
                   w={"full"}
                   maxW={"md"}
-                  bg={"black"}
+            
                   p={6}
                   my={0}
                 >
