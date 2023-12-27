@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useFollowOrUnFollowUser from "../../hooks/useFollowOrUnfollowUser";
 import { useAuthStore } from "../../store/authStore";
 

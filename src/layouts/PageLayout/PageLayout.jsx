@@ -16,8 +16,6 @@ const PageLayout = ({ children }) => {
 
   const checkingUserIsAuth = !user && loading;
 
-
-
   if (checkingUserIsAuth) {
     return <PageLayoutSpinner />;
   }
@@ -46,7 +44,7 @@ const PageLayout = ({ children }) => {
 
 export default PageLayout;
 
- export const PageLayoutSpinner = () => {
+export const PageLayoutSpinner = () => {
   return (
     <Flex h={"100vh"} justifyContent={"center"} alignItems={"center"}>
       <Spinner size={"xl"} />

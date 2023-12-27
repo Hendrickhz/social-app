@@ -1,15 +1,12 @@
 import {
   Avatar,
-  
   Button,
-  
   Flex,
   IconButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
-
   Skeleton,
   SkeletonCircle,
   Text,
@@ -21,7 +18,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { useAuthStore } from "../../store/authStore";
 import useDeleteComment from "../../hooks/useDeleteComment";
 
-const Comment = ({ comment ,postId}) => {
+const Comment = ({ comment, postId }) => {
   const { isLoading, userProfile } = useGetUserProfileById(
     comment.commentUserId
   );
@@ -29,10 +26,10 @@ const Comment = ({ comment ,postId}) => {
   const authUser = useAuthStore((state) => state.user);
   const isAuthUserComment = comment.commentUserId == authUser.uid;
 
-  const {isDeleting,deleteComment}= useDeleteComment();
-  const handleDelete=async()=>{
-    deleteComment(postId,comment.commentId)
-  }
+  const { isDeleting, deleteComment } = useDeleteComment();
+  const handleDelete = async () => {
+    deleteComment(postId, comment.commentId);
+  };
   if (isLoading) {
     return <LoadingComment />;
   }
@@ -58,16 +55,26 @@ const Comment = ({ comment ,postId}) => {
           </Text>
         </Flex>
         {isAuthUserComment ? (
-        <Menu>
-        <MenuButton size={'sm'} as={IconButton}icon={<BsThreeDotsVertical />}   aria-label='Options'>
-          
-        </MenuButton>
-        <MenuList p={0} m={0}>
-          <MenuItem m={0} p={0} size={'sm'} as={Button} onClick={handleDelete} isLoading={isDeleting} >Delete Comment</MenuItem>
-         
-         
-        </MenuList>
-      </Menu>
+          <Menu>
+            <MenuButton
+              size={"sm"}
+              as={IconButton}
+              icon={<BsThreeDotsVertical />}
+              aria-label="Options"
+            ></MenuButton>
+            <MenuList p={0} m={0}>
+              <MenuItem
+                m={0}
+                p={0}
+                size={"sm"}
+                as={Button}
+                onClick={handleDelete}
+                isLoading={isDeleting}
+              >
+                Delete Comment
+              </MenuItem>
+            </MenuList>
+          </Menu>
         ) : null}
       </Flex>
     </Flex>

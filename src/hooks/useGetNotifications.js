@@ -31,8 +31,6 @@ const useGetNotifications = () => {
           setNumOfUnReadNotification(unReadNotifications.length);
           setNotifications(sortedNotifications);
         } else {
-          // docSnap.data() will be undefined in this case
-          console.log("No such document!");
           return;
         }
       } catch (error) {
@@ -73,14 +71,17 @@ const useGetNotifications = () => {
         await updateDoc(notificationRef, {
           notifications: updatedNotifications,
         });
-
-        console.log("All notifications marked as read.");
       }
     } catch (error) {
       showToast("Error", error.message, "error");
     }
   };
-  return { isLoading, notifications, numOfUnReadNotification, updateAllNotificationsAsRead };
+  return {
+    isLoading,
+    notifications,
+    numOfUnReadNotification,
+    updateAllNotificationsAsRead,
+  };
 };
 
 export default useGetNotifications;

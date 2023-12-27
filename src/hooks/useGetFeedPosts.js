@@ -34,12 +34,12 @@ const useGetFeedPosts = () => {
       }
       let q;
       if (authUser.following.length == 0) {
-         q = query(
+        q = query(
           collection(firestore, "posts"),
           where("createdBy", "==", authUser.uid)
         );
       } else {
-         q = query(
+        q = query(
           collection(firestore, "posts"),
           or(
             where("createdBy", "in", authUser.following),
@@ -47,7 +47,6 @@ const useGetFeedPosts = () => {
           )
         );
       }
-
       try {
         const querySnapshot = await getDocs(q);
         const feedPosts = [];

@@ -147,7 +147,7 @@ function useCreatePost() {
   const { pathname } = useLocation();
   //to update data from the stores
   const addPostsToPostStore = usePostStore((state) => state.addPost);
-  const {addPost} = useUserProfileStore();
+  const { addPost } = useUserProfileStore();
 
   const handleCreatePost = async (selectedImg, caption) => {
     if (loading) return; //to prevent multiple actions
@@ -176,16 +176,12 @@ function useCreatePost() {
       await updateDoc(newPostDocRef, { imgURL: downloadURL }); // updating post doc with image string value in the firebase db
       newPost.imgURL = downloadURL;
 
-      if ( userProfile.uid === authUser.uid) {
+      if (userProfile.uid === authUser.uid) {
         addPostsToPostStore({ ...newPost, id: newPostDocRef.id });
-        console.log('added 1')
       }
 
       if (userProfile && pathname !== "/" && userProfile.uid === authUser.uid) {
-        addPost( newPostDocRef.id);console.log(newPostDocRef.id)
-        console.log('added 2')
-        console.log(userProfile)
-
+        addPost(newPostDocRef.id);
       }
 
       showToast("Success", "Post created successfully", "success");

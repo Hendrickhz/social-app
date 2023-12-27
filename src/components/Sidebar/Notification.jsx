@@ -20,15 +20,20 @@ import NotificationItem from "./NotificationItem";
 const Notification = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { isLoading, notifications, numOfUnReadNotification, updateAllNotificationsAsRead } = useGetNotifications();
+  const {
+    isLoading,
+    notifications,
+    numOfUnReadNotification,
+    updateAllNotificationsAsRead,
+  } = useGetNotifications();
 
   if (isLoading) {
     return null;
   }
-  const handleOnClose =async()=>{
+  const handleOnClose = async () => {
     onClose();
-    await updateAllNotificationsAsRead()
-  }
+    await updateAllNotificationsAsRead();
+  };
   return (
     <>
       <Tooltip
@@ -50,31 +55,44 @@ const Notification = () => {
           pos={"relative"}
         >
           <NotificationsLogo />
-         {numOfUnReadNotification > 0 ?  <Badge
-            display={{ base: "block", md: "none" }}
-            pos={"absolute"}
-            top={-1}
-            right={0}
-            px={2}
-            colorScheme="red"
-            borderRadius={99999}
-          >
-            {numOfUnReadNotification}
-          </Badge>:''}
-          <Box display={{ base: "none", md: "block" }}>
-            Notification{" "}
-           {numOfUnReadNotification > 0 ?  <Badge
+          {numOfUnReadNotification > 0 ? (
+            <Badge
+              display={{ base: "block", md: "none" }}
               pos={"absolute"}
+              top={-1}
+              right={0}
               px={2}
               colorScheme="red"
               borderRadius={99999}
             >
               {numOfUnReadNotification}
-            </Badge>:''}
+            </Badge>
+          ) : (
+            ""
+          )}
+          <Box display={{ base: "none", md: "block" }}>
+            Notification{" "}
+            {numOfUnReadNotification > 0 ? (
+              <Badge
+                pos={"absolute"}
+                px={2}
+                colorScheme="red"
+                borderRadius={99999}
+              >
+                {numOfUnReadNotification}
+              </Badge>
+            ) : (
+              ""
+            )}
           </Box>
         </Flex>
       </Tooltip>
-      <Drawer isOpen={isOpen} placement="right" onClose={handleOnClose} size={"sm"}>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={handleOnClose}
+        size={"sm"}
+      >
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -83,13 +101,25 @@ const Notification = () => {
           <DrawerBody p={0}>
             <VStack w={"full"} gap={3} p={0}>
               {notifications.map((noti, idx) => (
-                <NotificationItem key={idx} noti={noti} onClose={handleOnClose} />
+                <NotificationItem
+                  key={idx}
+                  noti={noti}
+                  onClose={handleOnClose}
+                />
               ))}
               {notifications.map((noti, idx) => (
-                <NotificationItem key={idx} noti={noti} onClose={handleOnClose} />
+                <NotificationItem
+                  key={idx}
+                  noti={noti}
+                  onClose={handleOnClose}
+                />
               ))}
               {notifications.map((noti, idx) => (
-                <NotificationItem key={idx} noti={noti} onClose={handleOnClose} />
+                <NotificationItem
+                  key={idx}
+                  noti={noti}
+                  onClose={handleOnClose}
+                />
               ))}
             </VStack>
           </DrawerBody>

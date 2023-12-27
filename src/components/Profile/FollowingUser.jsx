@@ -16,8 +16,8 @@ import { useAuthStore } from "../../store/authStore";
 const FollowingUser = ({ id, isOpen, onClose }) => {
   const { userProfile, isLoading } = useGetUserProfileById(id);
   const { isFollowing, handleFollowUnFollowUser } = useFollowOrUnFollowUser(id);
- const authUser= useAuthStore(state=>state.user);
- const isAuthUserProfile= authUser.uid==id
+  const authUser = useAuthStore((state) => state.user);
+  const isAuthUserProfile = authUser.uid == id;
   const navigate = useNavigate();
   const handleOnFollowButton = async () => {
     await handleFollowUnFollowUser();

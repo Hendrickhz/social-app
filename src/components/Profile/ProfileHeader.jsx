@@ -23,7 +23,6 @@ import useGetPostsFromUserProfile from "../../hooks/useGetPostsFromUserProfile";
 
 const ProfileHeader = () => {
   const { userProfile } = useUserProfileStore();
-  console.log(userProfile)
   const authUser = useAuthStore((state) => state.user);
   const isVisitingOwnProfileAndAuth =
     authUser && userProfile.username == authUser.username;
@@ -32,7 +31,7 @@ const ProfileHeader = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isFollowing, isUpdating, handleFollowUnFollowUser } =
     useFollowOrUnFollowUser(userProfile.uid);
-  const {posts}= useGetPostsFromUserProfile()
+  const { posts } = useGetPostsFromUserProfile();
   const {
     isOpen: isOpenFollowers,
     onOpen: onOpenFollowers,

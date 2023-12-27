@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Box,
   Flex,
   Skeleton,
   SkeletonCircle,
@@ -33,8 +32,13 @@ const FollowerUser = ({ id, isOpen, onClose }) => {
     );
   }
   return (
- 
-        <Flex cursor={'pointer'}  onClick={handleClick} gap={2} w={"full"} justifyContent={"flex-start"}>
+    <Flex
+      cursor={"pointer"}
+      onClick={handleClick}
+      gap={2}
+      w={"full"}
+      justifyContent={"flex-start"}
+    >
       <Avatar
         name={userProfile?.username}
         src={userProfile?.profilePicURL}
@@ -47,7 +51,6 @@ const FollowerUser = ({ id, isOpen, onClose }) => {
         </Text>
       </VStack>
     </Flex>
-   
   );
 };
 

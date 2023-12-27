@@ -9,7 +9,7 @@ const PostHeader = ({ creatorProfile, postCreatedAt }) => {
   );
   const authUser = useAuthStore((state) => state.user);
   const isAuthUserPost = authUser.uid == creatorProfile?.uid;
-  const {timeAgo}= useTimeAgo()
+  const { timeAgo } = useTimeAgo();
   const handleOnFollowButton = async () => {
     await handleFollowUnFollowUser();
   };
@@ -28,7 +28,13 @@ const PostHeader = ({ creatorProfile, postCreatedAt }) => {
         </Flex>
       </Flex>
       {isAuthUserPost ? null : (
-        <Button onClick={handleOnFollowButton} bg={'transparent'} _hover={{bg:'transparent'}} _active={{bg:'transparent'}} cursor={"pointer"}>
+        <Button
+          onClick={handleOnFollowButton}
+          bg={"transparent"}
+          _hover={{ bg: "transparent" }}
+          _active={{ bg: "transparent" }}
+          cursor={"pointer"}
+        >
           <Text
             fontWeight={"bold"}
             fontSize={12}

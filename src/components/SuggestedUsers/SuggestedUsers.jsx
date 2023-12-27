@@ -62,7 +62,6 @@ const SuggestedUsers = () => {
                 fontSize={14}
                 _hover={{ color: "gray.400" }}
                 onClick={onOpen}
-                
               >
                 See all
               </Text>
@@ -102,7 +101,12 @@ const SuggestedUsers = () => {
           </Link>
         </Box>
       </VStack>
-      <SuggestedUsersModal isLoading={isLoading} isOpen={isOpen} onClose={onClose} suggestedUsers={suggestedUsers}/>
+      <SuggestedUsersModal
+        isLoading={isLoading}
+        isOpen={isOpen}
+        onClose={onClose}
+        suggestedUsers={suggestedUsers}
+      />
     </>
   );
 };

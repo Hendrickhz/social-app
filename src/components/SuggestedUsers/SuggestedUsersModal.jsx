@@ -3,10 +3,8 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  
   ModalBody,
   ModalCloseButton,
- 
   VStack,
   SkeletonCircle,
   Skeleton,
@@ -14,7 +12,12 @@ import {
 } from "@chakra-ui/react";
 import SuggestedUser from "./SuggestedUser";
 
-const SuggestedUsersModal = ({isOpen,onClose,isLoading,suggestedUsers}) => {
+const SuggestedUsersModal = ({
+  isOpen,
+  onClose,
+  isLoading,
+  suggestedUsers,
+}) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -47,7 +50,6 @@ const SuggestedUsersModal = ({isOpen,onClose,isLoading,suggestedUsers}) => {
               {suggestedUsers.map((user) => (
                 <SuggestedUser key={user.uid} user={user} />
               ))}
-            
             </VStack>
           )}
         </ModalBody>

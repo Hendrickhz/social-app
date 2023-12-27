@@ -9,7 +9,7 @@ const NotificationItem = ({ noti, onClose }) => {
     navigate(`/${userProfile.username}`);
     onClose();
   };
-  const {timeAgo}=useTimeAgo()
+  const { timeAgo } = useTimeAgo();
 
   return (
     <>
@@ -44,9 +44,11 @@ const NotificationItem = ({ noti, onClose }) => {
             ? "started following you."
             : noti.type == "like"
             ? " liked your post."
-            : "commented in your post."}
+            : "commented in your post."}{" "}
+          <Text as={"span"} color={"gray"}>
             {" "}
-         <Text as={'span'} color={'gray'}> {timeAgo(noti?.createdAt)}</Text>
+            {timeAgo(noti?.createdAt)}
+          </Text>
         </Text>
       </Flex>
     </>

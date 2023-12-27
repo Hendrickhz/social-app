@@ -12,6 +12,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Text,
   Tooltip,
   VStack,
   useDisclosure,
@@ -22,17 +23,17 @@ import { useRef } from "react";
 import SuggestedUser from "./../SuggestedUsers/SuggestedUser";
 const Search = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isLoading, handleSearchUser, searchUsers, clearSearchUsers } = useSearchUser();
+  const { isLoading, handleSearchUser, searchUsers, clearSearchUsers } =
+    useSearchUser();
   const inputRef = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearchUser(inputRef.current.value);
-    console.log(searchUsers);
   };
-  const handleOnClose=()=>{
+  const handleOnClose = () => {
     clearSearchUsers();
-    onClose()
-  }
+    onClose();
+  };
   return (
     <>
       {" "}
@@ -58,12 +59,7 @@ const Search = () => {
         </Flex>
       </Tooltip>
       {/* Search modal box  */}
-      <Modal
-        isOpen={isOpen}
-        
-        motionPreset="slideInTop"
-        onClose={handleOnClose}
-      >
+      <Modal isOpen={isOpen} motionPreset="slideInTop" onClose={handleOnClose}>
         <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) " />
         <ModalContent>
           <ModalHeader>Search Users</ModalHeader>
@@ -86,17 +82,25 @@ const Search = () => {
                 </Flex>
               </FormControl>
             </form>
-       
-
-          {searchUsers.length > 0 ? (
-            <>
-              <VStack gap={4} py={2}>
-              {searchUsers.map((user) => (
-                <SuggestedUser isOpen={isOpen} onClose={onClose} key={user.uid} user={user} />
-              ))}
-              </VStack>
-            </>
-          ) : null}   </ModalBody>
+            <Text pb={4} pt={2} fontSize={13} color={"gray"}>
+              🔍 **Search Notice:** Case-sensitive search. Be precise with your
+              query's capitalization for accurate results. Happy searching! 🚀
+            </Text>
+            {searchUsers.length > 0 ? (
+              <>
+                <VStack gap={4} py={2}>
+                  {searchUsers.map((user) => (
+                    <SuggestedUser
+                      isOpen={isOpen}
+                      onClose={onClose}
+                      key={user.uid}
+                      user={user}
+                    />
+                  ))}
+                </VStack>
+              </>
+            ) : null}{" "}
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>

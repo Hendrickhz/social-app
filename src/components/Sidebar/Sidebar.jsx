@@ -1,4 +1,11 @@
-import { Box, Button, Flex, Link, Tooltip, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Link,
+  Tooltip,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { InstagramLogo, InstagramMobileLogo } from "../../assets/constants";
 
@@ -8,7 +15,7 @@ import SideBarItems from "./SideBarItems";
 import LogoutModal from "../AuthForm/LogoutModal";
 const Sidebar = () => {
   const { handleLogout, isLoggingOut } = useLogout();
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Box
@@ -46,7 +53,7 @@ const Sidebar = () => {
             </Link>
           </Flex>
           <Flex direction={"column"} gap={5}>
-         <SideBarItems/>
+            <SideBarItems />
           </Flex>
           {/* logout  */}
           <Tooltip
@@ -82,7 +89,12 @@ const Sidebar = () => {
           </Tooltip>
         </Flex>
       </Box>
-      <LogoutModal isLoggingOut={isLoggingOut} onClose={onClose} isOpen={isOpen} handleLogout={handleLogout}/>
+      <LogoutModal
+        isLoggingOut={isLoggingOut}
+        onClose={onClose}
+        isOpen={isOpen}
+        handleLogout={handleLogout}
+      />
     </>
   );
 };

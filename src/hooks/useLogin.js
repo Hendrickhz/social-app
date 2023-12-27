@@ -11,7 +11,7 @@ const useLogin = () => {
   const showToast = useShowToast();
 
   const loginUser = useAuthStore((state) => state.login);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const login = async (inputs) => {
     if (!inputs.email || !inputs.password) {
       showToast("Error", "Please fill all the fields.", "error");
@@ -21,18 +21,16 @@ const useLogin = () => {
         inputs.email,
         inputs.password
       );
-        if(userCred){
+      if (userCred) {
+        const usersRef = doc(firestore, "users", userCred.user.uid);
+        const docSnap = await getDoc(usersRef);
 
-          const usersRef = doc(firestore, "users", userCred.user.uid);
-          const docSnap = await getDoc(usersRef);
-          
-          localStorage.setItem('user-info',JSON.stringify(docSnap.data()))
-          loginUser(docSnap.data());
-          navigate('/')
-
-        }else{
-          showToast("Login Failed", "User credentials do not match.", "error");
-        }
+        localStorage.setItem("user-info", JSON.stringify(docSnap.data()));
+        loginUser(docSnap.data());
+        navigate("/");
+      } else {
+        showToast("Login Failed", "User credentials do not match.", "error");
+      }
     } catch (error) {
       showToast("Error", error.message, "error");
     }

@@ -16,7 +16,7 @@ const useFollowOrUnFollowUser = (userId) => {
   const { userProfile, setUserProfile } = useUserProfileStore(); // info of user profile that the auth user is looking
 
   const showToast = useShowToast(); //toast func
-  const {addNotification}=useAddNotification()
+  const { addNotification } = useAddNotification();
   const handleFollowUnFollowUser = async () => {
     setIsUpdating(true);
     try {
@@ -28,25 +28,19 @@ const useFollowOrUnFollowUser = (userId) => {
       await updateDoc(currentAuthUserRef, {
         following: isFollowing ? arrayRemove(userId) : arrayUnion(userId),
       });
-      console.log("Updated currentAuthUser following list");
+
       //updating other user's followers list
 
-      if(isFollowing){
+      if (isFollowing) {
         await updateDoc(userToFollowOrUnFollowRef, {
-          followers: 
-           arrayRemove(authUser.uid)
-          
+          followers: arrayRemove(authUser.uid),
         });
-      }else{
+      } else {
         await updateDoc(userToFollowOrUnFollowRef, {
-          followers: 
-           arrayUnion(authUser.uid)
-          
+          followers: arrayUnion(authUser.uid),
         });
-        await addNotification('follow',userId)
+        await addNotification("follow", userId);
       }
-   
-      console.log("Updated other user's followers list");
 
       // * updating the interface (global states)
       if (isFollowing) {
@@ -80,7 +74,7 @@ const useFollowOrUnFollowUser = (userId) => {
           ...authUser,
           following: [...authUser.following, userId],
         });
-      
+
         if (userProfile) {
           setUserProfile({
             ...userProfile,

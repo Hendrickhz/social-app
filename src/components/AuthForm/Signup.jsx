@@ -57,24 +57,24 @@ const Signup = () => {
           onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
         />
         <InputRightElement>
-        
           <Button onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <ViewOffIcon /> : <ViewIcon />}
           </Button>
         </InputRightElement>
       </InputGroup>
       {error && (
-            <>
-           
-            <Alert status="error">
-              <AlertIcon />
-             <Flex direction={"column"}>
-             <AlertTitle fontSize={"small"}>Signup Failed!</AlertTitle> 
-              <AlertDescription fontSize={"small"}>{error?.message}</AlertDescription>
-             </Flex>
-            </Alert>
-          </>
-          )}
+        <>
+          <Alert status="error">
+            <AlertIcon />
+            <Flex direction={"column"}>
+              <AlertTitle fontSize={"small"}>Signup Failed!</AlertTitle>
+              <AlertDescription fontSize={"small"}>
+                {error?.message}
+              </AlertDescription>
+            </Flex>
+          </Alert>
+        </>
+      )}
       <Button
         isLoading={loading}
         colorScheme="blue"

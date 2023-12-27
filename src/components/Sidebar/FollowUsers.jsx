@@ -1,11 +1,4 @@
-import {
-  Box,
-  Flex,
-  Tooltip,
-  useDisclosure,
- 
-  
-} from "@chakra-ui/react";
+import { Box, Flex, Tooltip, useDisclosure } from "@chakra-ui/react";
 import { RiUserFollowLine } from "react-icons/ri";
 import useGetSuggestedUsers from "../../hooks/useGetSuggestedUsers";
 import SuggestedUsersModal from "../SuggestedUsers/SuggestedUsersModal";
@@ -13,10 +6,10 @@ import { useAuthStore } from "../../store/authStore";
 const FollowUsers = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isLoading, suggestedUsers } = useGetSuggestedUsers();
- const authUser= useAuthStore(state=>state.user);
- if(!authUser){
-  return ''
- }
+  const authUser = useAuthStore((state) => state.user);
+  if (!authUser) {
+    return "";
+  }
   return (
     <>
       {" "}
@@ -42,7 +35,12 @@ const FollowUsers = () => {
           <Box display={{ base: "none", md: "block" }}>Folllow Users</Box>
         </Flex>
       </Tooltip>{" "}
-    <SuggestedUsersModal isOpen={isOpen} onClose={onClose} suggestedUsers={suggestedUsers} isLoading={isLoading}/>
+      <SuggestedUsersModal
+        isOpen={isOpen}
+        onClose={onClose}
+        suggestedUsers={suggestedUsers}
+        isLoading={isLoading}
+      />
     </>
   );
 };

@@ -40,20 +40,17 @@ const useSignUpWithEmailAndPassword = () => {
         return;
       }
       if (newUser) {
-
         const usersRef = doc(firestore, "users", newUser.user.uid);
         const docSnap = await getDoc(usersRef);
 
-        if(docSnap.exists()){
-
-          localStorage.setItem('user-info',JSON.stringify(docSnap.data()))
+        if (docSnap.exists()) {
+          localStorage.setItem("user-info", JSON.stringify(docSnap.data()));
           login(docSnap.data());
-        }else{
-
+        } else {
           const userDoc = {
             uid: newUser.user.uid,
-            email:inputs.email,
-            username:inputs.username,
+            email: inputs.email,
+            username: inputs.username,
             fullName: inputs.fullName,
             bio: "",
             profilePicURL: "",
@@ -61,7 +58,7 @@ const useSignUpWithEmailAndPassword = () => {
             following: [],
             posts: [],
             createdAt: Date.now(),
-          }
+          };
           await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
           localStorage.setItem("user-info", JSON.stringify(userDoc));
           login(userDoc);

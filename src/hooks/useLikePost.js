@@ -5,7 +5,6 @@ import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { firestore } from "../firebase/firebase";
 import useAddNotification from "./useAddNotification";
 
-
 const useLikePost = (post) => {
   const authUser = useAuthStore((state) => state.user);
   const showToast = useShowToast();

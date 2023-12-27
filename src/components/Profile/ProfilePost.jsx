@@ -30,7 +30,6 @@ import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import usePostStore from "../../store/postStore";
 import useTimeAgo from "../../hooks/useTimeAgo";
 
-
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const authUser = useAuthStore((state) => state.user);
@@ -42,15 +41,15 @@ const ProfilePost = ({ post }) => {
     (state) => state.deletePost
   );
 
-  const currentPost= post;
+  const currentPost = post;
 
   const [isDeleting, setIsDeleting] = useState(false);
   const showToast = useShowToast();
 
- const {timeAgo}= useTimeAgo();
-//  if(!profileUser || !authUser){
-//   return "loading."
-//  }
+  const { timeAgo } = useTimeAgo();
+  //  if(!profileUser || !authUser){
+  //   return "loading."
+  //  }
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     if (isDeleting) return;
@@ -135,7 +134,7 @@ const ProfilePost = ({ post }) => {
         motionPreset="slideInBottom"
       >
         <ModalOverlay />
-        <ModalContent p={0} w={{ base: "80%", md: "90%", lg: "80%" }} >
+        <ModalContent p={0} w={{ base: "80%", md: "90%", lg: "80%" }}>
           <ModalCloseButton top={-10} size={"lg"} right={-10} />
           <ModalBody p={0} m={0} w={"full"}>
             <Flex
@@ -143,7 +142,7 @@ const ProfilePost = ({ post }) => {
               mx={"auto"}
               direction={{ base: "column", md: "row" }}
               w={{ base: "100%", sm: "100%", md: "full" }}
-              h={{base:"73%",md:'50vh',lg:'75vh',xl:'90vh'}}
+              h={{ base: "73%", md: "50vh", lg: "75vh", xl: "90vh" }}
             >
               <Box
                 display={{ base: "flex", md: "none" }}
@@ -208,8 +207,8 @@ const ProfilePost = ({ post }) => {
                 </Flex>
                 <Divider my={4} />
                 <VStack gap={2} maxH={"450px"} overflowY={"auto"}>
-                <Flex w={'full'} gap={4} >
-                  <Avatar
+                  <Flex w={"full"} gap={4}>
+                    <Avatar
                       src={profileUser.profilePicURL}
                       name={profileUser.username}
                       size={"sm"}
@@ -228,9 +227,14 @@ const ProfilePost = ({ post }) => {
                       </Text>
                     </Flex>
                   </Flex>
-                
-               {post.comments.map(comment=><Comment postId={post.id} comment={comment} key={comment.commentId}/>)}
-                 
+
+                  {post.comments.map((comment) => (
+                    <Comment
+                      postId={post.id}
+                      comment={comment}
+                      key={comment.commentId}
+                    />
+                  ))}
                 </VStack>
                 <Box
                   pos={"absolute"}
@@ -243,9 +247,7 @@ const ProfilePost = ({ post }) => {
                   <PostFooter post={currentPost} isProfilePage={true} />
                 </Box>
               </Flex>
-              <Box
-               display={{ base: "block", md: "none" }}
-                p={3}>
+              <Box display={{ base: "block", md: "none" }} p={3}>
                 <PostFooter post={currentPost} isProfilePage={true} />
               </Box>
             </Flex>

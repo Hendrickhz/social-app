@@ -1,9 +1,19 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text } from "@chakra-ui/react"
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+} from "@chakra-ui/react";
 
-const LogoutModal = ({isOpen,onClose,isLoggingOut,handleLogout}) => {
+const LogoutModal = ({ isOpen, onClose, isLoggingOut, handleLogout }) => {
   return (
     <>
-     <Modal isOpen={isOpen} onClose={onClose} size={'sm'}>
+      <Modal isOpen={isOpen} onClose={onClose} size={"sm"}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Log out</ModalHeader>
@@ -13,14 +23,22 @@ const LogoutModal = ({isOpen,onClose,isLoggingOut,handleLogout}) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='red' mr={3} onClick={onClose}>
+            <Button colorScheme="red" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button variant='outline' isLoading={isLoggingOut} onClick={handleLogout} colorScheme="blue">Log out</Button>
+            <Button
+              variant="outline"
+              isLoading={isLoggingOut}
+              onClick={handleLogout}
+              colorScheme="blue"
+            >
+              Log out
+            </Button>
           </ModalFooter>
         </ModalContent>
-      </Modal></>
-  )
-}
+      </Modal>
+    </>
+  );
+};
 
-export default LogoutModal
+export default LogoutModal;

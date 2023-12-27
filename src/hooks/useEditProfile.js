@@ -14,7 +14,7 @@ const useEditProfile = () => {
   // Custom hooks to update global state with the edited user information
   const setAuthUser = useAuthStore((state) => state.setUser);
   const setUserProfile = useUserProfileStore((state) => state.setUserProfile);
-  const userProfile= useUserProfileStore(state=>state.userProfile)
+  const userProfile = useUserProfileStore((state) => state.userProfile);
   const handleEditProfile = async (inputs, selectedFile) => {
     if (isUpdating || !authUser) return; // Check if the profile is already updating or if there is no authenticated user
 
@@ -47,7 +47,6 @@ const useEditProfile = () => {
       //update the global states
       setAuthUser(updatedUser);
 
-     
       setUserProfile(updatedUser);
 
       showToast("Success", "User profile is updated successfully.", "success");

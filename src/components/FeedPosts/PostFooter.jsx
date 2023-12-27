@@ -32,7 +32,7 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const inputRef = useRef();
   const userProfile = useUserProfileStore((state) => state.userProfile);
   const { isCommenting, addComment } = useAddComment();
-  const authUser= useAuthStore(state=>state.user)
+  const authUser = useAuthStore((state) => state.user);
   const handleLikeClick = async () => {
     await likePost();
   };
@@ -44,7 +44,12 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleComment = async () => {
-    await addComment(post?.id, inputRef.current.value,post.createdBy,post.imgURL);
+    await addComment(
+      post?.id,
+      inputRef.current.value,
+      post.createdBy,
+      post.imgURL
+    );
     inputRef.current.value = "";
   };
   if (post == null) {
@@ -159,7 +164,6 @@ const PostFooter = ({ post, isProfilePage, creatorProfile }) => {
             <VStack spacing={4} minH={"500px"}>
               {post.comments.map((comment) => (
                 <Comment
-              
                   postId={post.id}
                   comment={comment}
                   key={comment.commentId}
