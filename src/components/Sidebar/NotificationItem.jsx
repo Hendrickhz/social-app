@@ -19,7 +19,7 @@ const NotificationItem = ({ noti, onClose }) => {
         gap={3}
         py={2}
         px={6}
-        bg={noti.read ? "" : "gray.500"}
+        bg={noti.read? "" : "gray.600"}
       >
         {noti.postImgURL !== null ? (
           <Image w={12} h={12} src={noti.postImgURL} />

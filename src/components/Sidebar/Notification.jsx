@@ -99,7 +99,7 @@ const Notification = () => {
           <DrawerHeader>Notifications</DrawerHeader>
           <Divider />
           <DrawerBody p={0}>
-            <VStack w={"full"} gap={3} p={0}>
+            <VStack w={"full"} gap={0} p={0}>
               {notifications.map((noti, idx) => (
                 <NotificationItem
                   key={idx}
@@ -107,20 +107,7 @@ const Notification = () => {
                   onClose={handleOnClose}
                 />
               ))}
-              {notifications.map((noti, idx) => (
-                <NotificationItem
-                  key={idx}
-                  noti={noti}
-                  onClose={handleOnClose}
-                />
-              ))}
-              {notifications.map((noti, idx) => (
-                <NotificationItem
-                  key={idx}
-                  noti={noti}
-                  onClose={handleOnClose}
-                />
-              ))}
+           
             </VStack>
           </DrawerBody>
         </DrawerContent>
