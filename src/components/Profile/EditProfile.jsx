@@ -30,7 +30,7 @@ const EditProfile = ({ isOpen, onClose }) => {
   const fileRef = useRef(null);
   const { selectedImg, handleImg } = usePreviewImg();
   const { isUpdating, handleEditProfile } = useEditProfile();
- 
+
   return (
     <>
       {authUser && (
@@ -41,14 +41,8 @@ const EditProfile = ({ isOpen, onClose }) => {
             <ModalCloseButton />
             <ModalBody>
               {/* Container Flex */}
-              <Flex >
-                <Stack
-                  spacing={4}
-                  w={"full"}
-                  maxW={"md"}
-                  p={6}
-                  my={0}
-                >
+              <Flex>
+                <Stack spacing={4} w={"full"} maxW={"md"} p={6} my={0}>
                   <Heading
                     lineHeight={1.1}
                     fontSize={{ base: "2xl", sm: "3xl" }}
@@ -137,7 +131,10 @@ const EditProfile = ({ isOpen, onClose }) => {
                       size="sm"
                       w="full"
                       _hover={{ bg: "blue.500" }}
-                      onClick={()=>handleEditProfile(inputs,selectedImg)}
+                      onClick={() => {
+                        handleEditProfile(inputs, selectedImg);
+                        onClose();
+                      }}
                       isLoading={isUpdating}
                     >
                       Submit
