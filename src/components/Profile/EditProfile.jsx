@@ -30,10 +30,7 @@ const EditProfile = ({ isOpen, onClose }) => {
   const fileRef = useRef(null);
   const { selectedImg, handleImg } = usePreviewImg();
   const { isUpdating, handleEditProfile } = useEditProfile();
-  const handleEdit = async (inputs, selectedImg) => {
-    await handleEditProfile(inputs, selectedImg);
-    onClose();
-  };
+ 
   return (
     <>
       {authUser && (
@@ -49,7 +46,6 @@ const EditProfile = ({ isOpen, onClose }) => {
                   spacing={4}
                   w={"full"}
                   maxW={"md"}
-            
                   p={6}
                   my={0}
                 >
@@ -141,7 +137,7 @@ const EditProfile = ({ isOpen, onClose }) => {
                       size="sm"
                       w="full"
                       _hover={{ bg: "blue.500" }}
-                      onClick={handleEdit}
+                      onClick={()=>handleEditProfile(inputs,selectedImg)}
                       isLoading={isUpdating}
                     >
                       Submit
